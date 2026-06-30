@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 順便把那個被關掉選單的箭頭改回向下
                 const otherBtn = openUl.closest("li").querySelector("a.btn-nav-drawer");
                 if (otherBtn) {
-                    otherBtn.querySelector("img").src = "../images/arrow_down.svg";
+                    otherBtn.querySelector("img").src = "./images/arrow_down.svg";
                 }
             }
         });
@@ -91,10 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // 4. 處理自己目前的開關與箭頭切換
         if (isOpen) {
             currentUl.classList.remove("-on");
-            currentImg.src = "../images/arrow_down.svg";
+            currentImg.src = "./images/arrow_down.svg";
         } else {
             currentUl.classList.add("-on");
-            currentImg.src = "../images/arrow_up.svg";
+            currentImg.src = "./images/arrow_up.svg";
         }
     });
 
