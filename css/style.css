@@ -1,0 +1,1392 @@
+/* 全域色彩系統 (UI Style Guide) */
+:root {
+    /* 1. 品牌與主動狀態 (Brand & Active States) */
+    --action-primary: #FF9500;
+    --ui-active: #0066ff;
+
+    /* 2. 背景與表面 (Background Surfaces) */
+    --bg-global: #F8F9FA;
+    --bg-container: #FFFFFF;
+    --bg-bluecontainer: #EFF6FF;
+
+    /* 3. 文字階層 (Typography Hierarchy) */
+    --text-main: #1C1C1E;
+    --text-body: #3A3A3C;
+    --text-muted: #8E8E93;
+    --border-standard: #E5E5EA;
+    --border-inactive: #D1D1D6;
+}
+
+/* 全域屬性 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: inherit;
+    color: var(--text-body);
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: var(--bg-global);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 高階無襯線字體重設 */
+    font-size: 1.6rem; /* 🟢 全站預設內文字級變為 16px */
+    line-height: 1.6;  /* 設定舒適的行高，文字才不會擠在一起 */
+}
+
+img {
+    display: inline-block;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+input[type='radio'] {
+    display: none;
+}
+section + section {
+    padding-block: 8rem;
+}
+
+
+.container {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: 0 3.2rem;
+}
+.booking-section .content {
+    margin-top: 1rem;
+}
+.booking-section .topic {
+    margin-bottom: 2rem;
+}
+.section-title {
+    margin-bottom: 4.8rem;
+    text-align: center;
+}
+.burger-btn, .mobile-drawer {
+    display: none;
+}
+.logo,
+.nav-btn,
+.footer-btn,
+.copyright {
+    white-space: nowrap;
+}
+/* ------------------ 字體階層組件 (Typography Tokens) ------------------ */
+
+.text-hero {
+    font-size: 4.8rem;   /* 48px - 專屬於 Hero 區的霸氣大標 */
+    font-weight: 600;   /* 超粗體 */
+    /* letter-spacing: -0.05em; 稍微縮小字距，大字看起來會極度高級 */
+}
+.text-title-large {
+    font-size: 3.2rem;   /* 32px - 各個 Section 的主要大標題（如：預約您的撞球體驗） */
+    font-weight: 800;
+    color: var(--text-main);
+}
+.text-title-medium {
+    font-size: 2.0rem;   /* 20px - 卡片內的大標題（如：新竹旗艦館、球檯預約系統） */
+    font-weight: 600;
+    color: var(--text-main);
+}
+.text-body {
+    font-size: 1.6rem;   /* 16px - 標準標準內文、價目表數字 */
+    font-weight: 400;
+    color: var(--text-body);
+}
+.text-muted {
+    font-size: 1.4rem;   /* 14px - 次要提示、預約規範小字、小標題 */
+    font-weight: 400;
+    /* color: var(--text-muted); */
+}
+.eng-title {
+    color: var(--ui-active);
+}
+
+/* ------------------buttons--------------------- */
+.big-btn {
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 20px;
+    font-size: 1.6rem;
+}
+.mid-btn {
+    border-radius: 20px;
+    padding: .5rem 1.5rem;
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.cta-btn {
+    background-color: var(--action-primary);
+    color: var(--bg-container);
+    font-weight: 600;
+
+}
+.next-step {
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+}
+.sec-btn  {
+    border: 1px solid var(--border-standard);
+    background-color: var(--bg-global);
+    color: var(--text-body);
+}
+.course {
+    background-color: rgba(138, 138, 138, 0.6);
+    color: var(--bg-container);
+}
+
+.nav-btn {
+    color: var(--bg-global);
+    font-size: 1.4rem;
+}
+.nav-btn:hover {
+    color: var(--bg-container);
+}
+/* login燈箱 ================================= */
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+dialog.modal-login {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding: 20px 40px;
+    border: 1px solid var(--border-standard);
+    border-radius: 12px;
+    position: relative;
+}
+dialog.modal-login::backdrop {
+    background-color: rgba(0, 0, 0, 0.6); /* 黑色半透明 */
+    backdrop-filter: blur(5px);
+}
+
+.close-btn-area {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.login-top {
+    text-align: center;
+    .login-title {
+        padding-block: 20px;
+    }
+}
+.login-box {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* background-color: #198754; */
+}
+.mem-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.mem-block input {
+    background-color: var(--bg-global);
+    padding: 1rem 1.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-standard);
+    margin-top: .4rem;
+}
+.log-in {
+    width: 100%;
+    background-color: var(--action-primary);
+    border-radius: 2rem;
+    padding: 1rem;
+    color: var(--bg-container);
+    font-weight: 600;
+}
+.mem-psw-box {
+    display: flex;
+    justify-content: space-between;
+}
+.forget-psw {
+    color: var(--ui-active);
+    font-size: 1.4rem;
+}
+.register-block {
+    padding-block: 20px;
+    border-top: 1px solid var(--border-standard);
+    text-align: center;
+
+    .register-btn {
+        color: var(--ui-active);
+    }
+}
+
+/* header */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 1;
+}
+/* 內頁專用頁首樣式 */
+.header.header-internal {
+    position: relative;             /* 讓它恢復正常流向，會把下方的內頁內容乖乖往下推 */
+    background-color: var(--text-main); /* 賦予它跟頁尾一樣的時尚質感深色背景 */
+}
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    
+}
+.header .container .center {
+    /* flex-grow: 3; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 4rem;
+}
+.header .container .right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    /* flex-grow: 2; */
+}
+img.logo-pic {
+    width: 80px;
+}
+
+/* --- 下拉選單核心核心樣式 --- */
+.dropdown {
+    position: relative; /* 讓下一層選單相對這個按鈕定位 */
+    display: inline-block;
+}
+/* 下拉選單的黑底座浮動視窗 */
+.dropdown-content {
+    display: none;        /* 平常隱藏起來 */
+    position: absolute;   /* 絕對定位，飄浮在網頁上方 */
+    top: 100%;           /* 剛好貼在「關於我們」按鈕的正下方 */
+    left: 50%;
+    transform: translateX(-50%); /* 讓選單水平居中對齊按鈕 */
+    background-color: var(--text-main); /* 沿用妳的時尚黑底色 */
+    min-width: 140px;     /* 設定寬度 */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* 加上高級感的陰影 */
+    border-radius: 12px;  /* 圓角 */
+    padding: 10px 0;
+    z-index: 999;         /* 確保不會被下方的 Hero 區大圖擋住 */
+}
+/* 下拉選單裡面的每一個超連結 */
+.dropdown-content a {
+    color: var(--bg-global); /* 預設淺色字 */
+    padding: 12px 20px;
+    display: block;          /* 讓它整橫條都可以點擊 */
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+/* 滑鼠移入選單內超連結的效果 */
+.dropdown-content a:hover {
+    background-color: var(--ui-active); /* 變成妳的科技藍 */
+    color: var(--bg-container);        /* 字體變純白 */
+}
+/* 🔥 關鍵魔術：當滑鼠移入 .dropdown 容器時，讓裡面的內容顯示 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* hero-section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 99vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(../images/screen.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+}
+.hero-section .container {
+    /* margin-top: 200px; */
+    width: 100%;
+    transform: translateY(15vh);
+    /* position: absolute;
+    bottom: 50px;
+    left: 0; */
+    /* text-align: center; */
+}
+.hero-section p, .hero-section h1 {
+    color: var(--bg-container);
+}
+.hero-section h1 {
+    margin-bottom: 10px;
+
+}
+.hero-section p {
+    margin-bottom: 20px;
+    /* width: 80%; */
+}
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+}
+.arrow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--bg-container);
+    font-size: 2rem;
+}
+/* ---------------comparison-section------------ */
+.mark-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--bg-container);
+    background-color: var(--ui-active);
+}
+.mark-tradition {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: var(--bg-container);
+    background-color: var(--text-muted);
+}
+.compare-area-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    /* justify-content: center; */
+    /* align-content: center; */
+    gap: 20px;
+    width: 100%;
+}
+.compare-card {
+    max-width: 400px;
+    min-width: 220px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;   
+    aspect-ratio: 3 / 4;
+    transition: .5s;
+}
+.compare-card:hover {
+    scale: 1.05;
+}
+.compare-card-icon {
+    width: 50%;
+    /* height: 100%; */
+    /* max-width: 130px; */
+    aspect-ratio: 1 / 1;
+    background-color: var(--bg-container); 
+    
+}
+
+.icon-broken-bulb {
+    -webkit-mask: url('../images/light-bulb.png') no-repeat center / contain;
+    mask: url('../images/light-bulb.png') no-repeat center / contain;
+}
+.icon-sun {
+    -webkit-mask: url('../images/sun.png') no-repeat center / contain;
+    mask: url('../images/sun.png') no-repeat center / contain;
+}
+.icon-smoking {
+    -webkit-mask: url('../images/smoking.png') no-repeat center / contain;
+    mask: url('../images/smoking.png') no-repeat center / contain;
+}
+.icon-no-smoking {
+    -webkit-mask: url('../images/no-smoking.png') no-repeat center / contain;
+    mask: url('../images/no-smoking.png') no-repeat center / contain;
+}
+.icon-sand-clock {
+    -webkit-mask: url('../images/sand-clock.png') no-repeat center / contain;
+    mask: url('../images/sand-clock.png') no-repeat center / contain;
+}
+.icon-approve {
+    -webkit-mask: url('../images/approve.png') no-repeat center / contain;
+    mask: url('../images/approve.png') no-repeat center / contain;
+}
+.icon-question {
+    -webkit-mask: url('../images/question.png') no-repeat center / contain;
+    mask: url('../images/question.png') no-repeat center / contain;
+}
+.icon-target {
+    -webkit-mask: url('../images/target.png') no-repeat center / contain;
+    mask: url('../images/target.png') no-repeat center / contain;
+}
+.title-front-card::after,
+.title-front-card::before {
+    content: "";
+    flex-grow: 1;
+    border-bottom: 2px dashed var(--border-inactive);
+}
+.title-back-card::after,
+.title-back-card::before {
+    content: "";
+    flex-grow: 1;
+    border-bottom: 2px dashed var(--bg-bluecontainer);
+}
+.title-front-card, .title-back-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    font-size: 1.4rem;
+}
+.title-front-card {
+    color: var(--border-inactive);
+}
+.title-back-card {
+    color: var(--bg-bluecontainer);
+}
+.card-content {
+    width: 100%;
+    /* height: 70%; */
+    /* aspect-ratio: 2/1; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    /* justify-content: space-between; */
+}
+
+.front-card, .back-card {
+    /* border: 1px solid var(--border-standard); */
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: 1s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+
+    .compare-card-txt {
+        color: var(--bg-global);
+        font-weight: 500;
+        line-height: 1.4;
+        font-size: 1.8rem;
+        height: fit-content;
+    }
+    
+}
+.front-card {
+    background-color: var(--text-muted);
+    transform: perspective(1000px) rotateY(0deg);
+}
+.back-card {
+    background-color: var(--ui-active);
+    transform: perspective(1000px) rotateY(180deg);
+}
+
+.compare-card.flipped .front-card {
+    transform: perspective(1000px) rotateY(-180deg);
+}
+.compare-card.flipped .back-card {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+
+.compare-area {
+    width: 80%;
+    margin-top: 6rem;
+    margin-inline:auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    /* background-color: var(--bg-container); */
+}
+.comparison-header-row,
+.comparison-pair {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+}
+
+
+/* services-section */
+
+.services-section .row {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    /* justify-content: space-around; */
+    /* gap: 20px; */
+    background-color: var(--bg-container);
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+    align-items: stretch;
+    text-align: center;
+    padding: 20px;
+}
+.ball-frame-pic {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url(../images/Frame.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* min-height: 507px; */
+}
+.services-section .row .col-left {
+    position: relative;
+}
+.services-section .row .col-left,
+.services-section .row .col-right {
+    flex: 1;
+    padding: 20px 30px;
+}
+
+.services-section .row .col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-self: center;
+    
+}
+
+.pyramid-row {
+    margin-top: -7px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.item {
+    font-size: 20px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: var(--bg-global);
+    border: 1px solid var(--border-standard);
+    color: var(--text-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+
+.item:hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+/* 🎯 加上這段：當泡泡被選中時的高級都會藍外殼 */
+.item.active {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+    border-color: var(--ui-active); /* 讓邊框也同步變藍色，層級更細緻 */
+}
+
+.services-section .row .col-right {
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+    margin-inline: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.img-service {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center top;
+    vertical-align: bottom;
+    border-radius: 10px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.info-txt {
+    margin-top: .2rem;
+    line-height: 2.4rem;
+}
+
+.btn-more-info {
+    font-weight: 500;
+    background-color: var(--action-primary);
+    color: var(--bg-container);
+    width: 100%;
+    /* padding: .5em 3em; */
+    margin-top: 1.6rem;
+}
+
+
+/* booking-section */
+/* -----------進度條---------- */
+.booking-section .container .progress-bar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* background-color: #007AFF; */
+    /* height: 30px; */
+    padding: 5px 10px;
+}
+
+.stepper {
+    /* margin-top: 20px; */
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #FF9500; */
+}
+
+.step-item {
+    display: inline-block;
+    padding-inline: 10px;
+    position: relative;
+}
+
+.step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background-color: var(--border-standard);
+}
+
+.step-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--border-standard);
+    text-align: center;
+    border-radius: 50%;
+    color: var(--border-inactive);
+    line-height: auto;
+}
+
+.step-item.active .step-number {
+    background-color: var(--ui-active);
+    color: var(--bg-container);
+}
+
+/* -------------------預約介紹及注意事項--------------------- */
+.price-table {
+    margin-inline: auto;
+    border: 1px solid var(--border-standard);
+    /* padding: 20px; */
+    border-radius: 20px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th {
+    background-color: var(--bg-global);
+    font-weight: normal;
+    font-size: 1.4rem;
+}
+
+td,
+th {
+    padding: 6px 10px;
+    text-align: center;
+    /* background-color: #007AFF; */
+}
+
+td {
+    width: 25%;
+}
+tr:not(:first-child):hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+
+.price-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.rule-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-body);
+}
+.notice.topic ol {
+    padding-left: 20px;
+}
+
+.notice.topic li {
+    list-style: decimal;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin-bottom: 8px;
+}
+
+/* ---------------------預約表單-------------------------- */
+.booking-section .container .row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 20px;
+    padding-inline: 3rem;
+    /* align-items: flex-start; */
+}
+
+.booking-section .container .row .col-left,
+.booking-section .container .row .col-right {
+    flex: 1;
+    border: 1px solid var(--border-standard);
+    padding: 2rem;
+    background-color: var(--bg-container);
+    border-radius: 10px;
+    
+}
+
+.booking-section .container .row .col-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.store-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.store-btn {
+    background-color: var(--bg-global);
+    padding-block: 10px;
+    width: 100%;
+    text-align: center;
+    /* margin-inline: 20px; */
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.store-btn:hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+
+.store-options input[type='radio']:checked+.store-btn {
+    background-color: var(--ui-active);
+    color: var(--bg-container);
+}
+
+.calendar {
+    width: 100%;
+    /* height: 300px; */
+    background-color: var(--bg-global);
+    border-radius: 20px;
+    border: 1px solid var(--border-standard);
+}
+
+.hours {
+    display: flex;
+    justify-content: space-around;
+    padding-inline: 10px;
+}
+
+.hour-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.hour-btn:hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+.hours input[type='radio']:checked+.hour-btn {
+    background-color: var(--ui-active);
+    color: var(--bg-container);
+}
+.booking-title, .step-text {
+    color: var(--text-muted);
+}
+.current-step {
+    color: var(--ui-active);
+}
+.choose-time {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    /* justify-content: space-between; */
+}
+.choose-time .col {
+    flex: 1;
+}
+select.time-input, .pick-date {
+    padding: 0 20px;
+    cursor: pointer;
+    /* 拔除預設外觀 */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px;
+}
+.time-input {
+    background-color: var(--bg-global);
+    border: 1px solid var(--border-standard);
+    color: var(--text-body);
+    border-radius: 20px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.confirm-area {
+    width: 100%;
+    background-color: var(--bg-global);
+    padding: 10px 20px;
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+}
+.choose-result {
+    text-align: center;
+    padding-block: 10px;
+}
+
+
+/* branches-section */
+
+.branches-section .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-block: 4rem;
+}
+
+.branches-section .col .card {
+    max-width: 750px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-radius: 20px;
+    background-color: var(--bg-container);
+    border: 1px solid var(--border-standard);
+}
+.card-left {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.store-txt p {
+    font-size: 1.4rem;
+}
+
+.store-pic img{
+    max-width: 250px;
+    width: 100%;
+    background-color: #0066ff;
+}
+
+
+.branch-btn {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+
+
+
+
+
+/* footer */
+.footer {
+    padding-block: 30px;
+    background-color: var(--text-main);
+}
+.footer .container {
+    height: 100%;
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer .container .center {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.footer-btn {
+    color: var(--bg-global);
+    font-size: 1.4rem;
+
+    border-radius: 20px;
+    /* padding: .5rem 1.5rem; */
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-btn:hover {
+    color: var(--bg-container);
+}
+.copyright {
+    color: var(--bg-container);
+    font-size: 1.4rem;
+}
+
+/* RWD=================================== */
+.mobile-cta-banner,
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media screen and (width <= 1024px) {
+    .text-hero {
+        font-size: 4.0rem;
+    }
+    .text-title-large {
+        font-size: 2.8rem;
+    }
+
+    /* header============================ */
+    .container {
+        padding: 0 1.2rem;
+    }
+    .header .container .center {
+        gap: 0rem; 
+    }
+    .header .container .right {
+        gap: 0.8rem;
+    }
+    .nav-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 1.4rem;
+    }
+    .header .cta-btn {
+        padding: 0.6rem 1.2rem;
+    }
+
+
+
+    /* service--------------------------- */
+
+    .services-section .row {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .services-section .row .col-left {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        justify-content: safe center;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }   
+    
+    .services-section .row .col-right {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 1.6rem;
+        padding: 16px 20px;
+        /* height: 100%; */
+        .pic {
+            /* flex: 2; */
+            flex-shrink: 0;
+            width: 40%;
+            align-self: center; 
+        }
+        .img-service {
+            aspect-ratio: 4 / 3;
+        }
+        .info {
+            /* flex: 3; */
+            /* flex-shrink: 3; */
+            /* height: 100%; */
+            /* justify-content: space-between; */
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .info-title {
+            margin: 0;
+        }
+        .btn-more-info {
+            /* margin-top: auto; */
+            width: auto;
+        }
+    }
+    .pyramid-row {
+        gap: 0;
+    }
+    .item:only-child {
+        margin-right: 6px;
+    }
+    .item:not(:only-child) {
+        margin-inline: 6px;
+    }
+
+
+
+    /* compare============================ */
+
+    .compare-area-grid {
+        padding-inline: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+    .compare-card {
+        aspect-ratio: 4 / 3;
+    }
+    .card-content {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+    .compare-card-txt {
+        text-align: left;
+    }
+    .compare-card-icon {
+        width: 40%;
+    }
+
+
+    /* booking======================= */
+    .booking-section .container .row {
+        flex-direction: column-reverse;
+    }
+    .booking-section .container .row .col-left {
+        display: none;
+    }
+}
+
+/* 當螢幕小於 950px，空間開始緊張，啟動柔性折行 */
+@media screen and ( width < 960px) {
+    .footer .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-block: 2rem;
+    }
+}
+
+@media screen and (width < 768px) {
+    .text-hero {
+        font-size: 3.2rem;
+        line-height: 1.3;
+    }
+    .text-title-large {
+        font-size: 2.4rem;
+    }
+    .text-title-medium {
+        font-size: 1.8rem;
+    }
+
+    .header .container .center,
+    .header .container .right {
+        display: none !important;
+    }
+
+    .big-btn {
+        padding: 10px 20px;
+    }
+
+    .burger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        z-index: 9999;
+        position: relative;
+    }
+    .burger-bar {
+        width: 100%;
+        height: 2px;
+        background-color: var(--bg-container);
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-drawer {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding-top: 50px;
+        background-color: var(--text-main);
+        z-index: 9998;
+        
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.is-active {
+        transform: translateX(0);
+    }
+    .mobile-drawer-nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .drawer-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-width: 200px;
+        height: 100%;
+        gap: 1.6rem; 
+    }
+
+    .login-btn {
+        border: 1px solid var(--bg-container);
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .drawer-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        border-radius: 10px;
+        color: var(--bg-global);
+        font-size: 2.0rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .nav-btn-child-list {
+        transform: translateX(20px);
+        display: none;
+    }
+    .-on {
+        display: block;
+    }
+
+    
+
+    /* 漢堡按鈕三條線變身「✕」 */
+    .burger-btn.is-active .burger-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .burger-btn.is-active .burger-bar:nth-child(2) {
+        opacity: 0; 
+    }
+    .burger-btn.is-active .burger-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .icon-nav-btn {
+        display: block;
+    }
+
+
+    /* hero區========================= */
+    .hero-section {
+        min-height: calc(99vh - 60px);
+    }
+    
+    .booking-section, 
+    .branches-section {
+        display: none !important;
+    }
+    .mobile-cta-banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--text-main);
+        padding: 6rem 3.2rem;
+        text-align: center;
+    }
+    .mobile-cta-banner h2 {
+        color: var(--bg-container);
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+    }
+    .mobile-cta-banner p {
+        color: var(--text-muted);
+        font-size: 1.4rem;
+        margin-bottom: 2.4rem;
+    }
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: var(--bg-container);
+        border-top: 1px solid var(--border-standard);
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
+        text-align: center;
+        vertical-align: middle;
+
+        .tab-title {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+        }
+        .tab-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-inline: 10px;
+        }
+    }
+
+/* service======================== */
+    .services-section .row .col-right {
+        flex-direction: column;
+        /* gap: 1.6rem; */
+        /* height: 100%; */
+        align-items: center;
+        .pic {
+            /* flex: 2; */
+            width: 100%;
+            flex-shrink: 0;
+            align-self: center; 
+        }
+        .img-service {
+            aspect-ratio: 16 / 9;
+        }
+        .info {
+            width: 100%;
+            align-items: center;
+            text-align: center;
+        }
+        .info-title {
+            margin: 0;
+        }
+        
+    }
+    .item {
+        width: 90px;
+        height: 90px;
+    }
+
+/* compare====================== */
+    .compare-area-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
+    }
+    .compare-card {
+        aspect-ratio: 16 / 9;
+        
+    }
+    .compare-card-icon {
+        width: 30%;
+    }
+    .card-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+
+    /* footer========================== */
+    .footer {
+        background-color: var(--bg-container);
+        padding-block: 40px;
+    }
+    .footer .container {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+    .footer .logo,
+    .footer-btn {
+        color: var(--text-main) !important; 
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+    .footer .center {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .footer .copyright {
+        color: var(--text-muted) !important;
+        font-size: 1.2rem;
+    }
+
+    .footer-cta-btn {
+        flex: 2;
+        height: 100%;
+        /* line-height: 0; */
+        background-color: var(--action-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .tab-title {
+            color: var(--bg-container);
+            font-weight: 600;
+            
+            
+        }
+        
+    }
+    body {
+        padding-bottom: 60px;
+    }
+    
+}

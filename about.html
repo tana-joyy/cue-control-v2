@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌與場館簡介</title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="icon" href="./images/logo.svg" type="image/png">
+    <link rel="icon" href="./images/logo.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+    <header class="header header-internal">
+        <nav class="container">
+            <div class="left">
+                <a href="index.html" class="logo"><img src="./images/logo-letter-dark-mode.svg" alt="logo"
+                        class="logo-pic"></a>
+            </div>
+            <div class="center">
+                <div class="dropdown">
+                    <a href="" class="mid-btn nav-btn">什麼是撞球 ▾</a>
+                    <div class="dropdown-content">
+                        <a href="billiards.html">撞球知識指南</a>
+                        <a href="">新手教學</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="" class="mid-btn nav-btn">訓練課程 ▾</a>
+                    <div class="dropdown-content">
+                        <a href="">預約課程</a>
+                        <a href="course.html">課程方案</a>
+                    </div>
+                </div>
+                <a href="" class="mid-btn nav-btn">最新消息</a>
+                <div class="dropdown">
+                    <a href="" class="mid-btn nav-btn">關於我們 ▾</a>
+                    <div class="dropdown-content">
+                        <a href="about.html">品牌與場館</a>
+                        <a href="menu.html">球檯價目及菜單</a>
+                        <a href="coaches.html">專業師資團隊</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <button type="button" class="mid-btn nav-btn js-login-modal-btn" id="loginModalBtn">會員登入</button>
+                <a href="booking.html" class="cta-btn mid-btn nav-btn">立即預約</a>
+            </div>
+            <button type="button" class="burger-btn" aria-label="切換選單">
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+            </button>
+        </nav>
+        <div class="mobile-drawer">
+            <nav class="mobile-drawer-nav">
+                <ul class="drawer-list">
+                    <li class="drawer-li">
+                        <a href="" class="drawer-link btn-nav-drawer">
+                            什麼是撞球<img src="./images/arrow_down.svg" alt="" class="icon-nav-btn"></a>
+                        <ul class="nav-btn-child-list ">
+                            <li><a href="billiards.html" class="drawer-link">撞球知識指南</a></li>
+                            <li><a href="" class="drawer-link">新手教學</a></li>
+                        </ul>
+                    </li>
+                    <li class="drawer-li">
+                        <a href="" class="drawer-link btn-nav-drawer">訓練課程<img src="./images/arrow_down.svg" alt=""
+                                class="icon-nav-btn"></a>
+                        <ul class="nav-btn-child-list">
+                            <li><a href="" class="drawer-link">預約課程</a></li>
+                            <li><a href="course.html" class="drawer-link">課程方案</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="drawer-link">最新消息</a>
+                    </li>
+                    <li class="drawer-li">
+                        <a href="" class="drawer-link btn-nav-drawer">關於我們<img src="./images/arrow_down.svg" alt=""
+                                class="icon-nav-btn"></a>
+                        <ul class="nav-btn-child-list">
+                            <li><a href="about.html" class="drawer-link">品牌與場館</a></li>
+                            <li><a href="menu.html" class="drawer-link">球檯價目及菜單</a></li>
+                            <li><a href="coaches.html" class="drawer-link">專業師資團隊</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button" class="drawer-link login-btn js-login-modal-btn">會員登入</button>
+                    </li>
+                    <li>
+                        <a href="booking.html" class="drawer-link cta-btn">立即預約</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <dialog class="modal-login" id="loginModal">
+            <button class="close-btn-area" type="button">
+                <img src="./images/close.svg" alt="" id="closeBtn" class="close-btn">
+            </button>
+            <div class="login-top">
+                <!-- <h3>只差最後一步了！</h3> -->
+                <h3 class="text-title-medium login-title">登入</h3>
+            </div>
+            <form class="login-box">
+                <div class="mem-block">
+                    <label for="mem-id">手機號碼 / Email</label>
+                    <input type="text" placeholder="請輸入帳號" id="mem-id">
+                </div>
+                <div class="mem-block">
+                    <div class="mem-psw-box">
+                        <label for="mem-psw">密碼</label>
+                        <a href="#" class="forget-psw">忘記密碼？</a>
+                    </div>
+
+                    <input type="password" placeholder="請輸入密碼" id="mem-psw">
+                </div>
+                <button type="submit" class="log-in" id="logIn">登入</button>
+                <div class="register-block">
+                    <p>還不是會員嗎？ <a href="#" class="register-btn">立即註冊</a></p>
+                </div>
+            </form>
+        </dialog>
+        <section class="about-manifesto">
+            <div class="container">
+                <div class="about-manifesto-content">
+
+                    <h1 class="text-title-large">品牌故事與場館簡介</h1>
+                    <p class="text-body">
+                        Cue Control 打破傳統暗沉、
+                        煙霧繚繞的撞球場印象，專為熱愛競技的你打造頂級運動殿堂。引進國際賽事指定球檯與智慧控場，融合俐落科技線條，用極致精準，重新定義你的熱血擊球美學！
+                    </p>
+                </div>
+                <div class="about-manifesto-image-wrapper">
+                    <img src="./images/brand-intro.png" alt="Cue Control 奢華撞球空間" class="about-img">
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="about-locations">
+            <div class="container">
+                <div class="card">
+                    <div class="about-locations__header">
+                        <h2 class="head-title">分店一覽</h2>
+                    </div>
+
+                    <article class="location-card">
+                        <div class="location-card__image-wrapper">
+                            <img src="./images/storeimg_hsinchu.png" alt="新竹旗艦館實景" class="location-card-img">
+                        </div>
+                        <div class="location-card__content">
+                            <h3 class="location-card__title">新竹旗艦館</h3>
+                            <p class="about-page__paragraph">新竹旗艦館以大器的都會現代風為主題，高挑的清水模天花板、廣闊的清透水橡綠線條。配置極致精準的 Brunswick
+                                球檯，為追求完美與尖端體驗的球友，打造最具質感的專屬流動空間。
+                            </p>
+                            <div class="location-card__actions">
+                                <a href="booking.html" class="btn cta-btn">線上預約</a>
+                                <a href="https://maps.app.goo.gl/NPpUqSH1aFyz24Te9" class="btn btn--secondary"
+                                    title="開啟 google map" target="_blank">場館位置</a>
+                                <a href="tel:+88635358899" class="btn btn--secondary">聯絡場館</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="location-card location-card--reverse">
+                        <div class="location-card__content">
+                            <h3 class="location-card__title">桃園概念館</h3>
+                            <p class="about-page__paragraph">桃園概念館完美融合溫潤木質調，採用天然橡木與乳白色系打造，拉近視覺質感細緻度。這裡配備了經典的 Brunswick
+                                球檯，是一處極適合全家大小參與、三五好友盛夏聚會的愜意選桌首選。
+                            </p>
+                            <div class="location-card__actions">
+                                <a href="booking.html" class="btn cta-btn">線上預約</a>
+                                <a href="https://maps.app.goo.gl/suRcT2aDp1WyYLLZ6" class="btn btn--secondary"
+                                    title="開啟 google map" target="_blank">場館位置</a>
+                                <a href="tel:+88633335566" class="btn btn--secondary">聯絡場館</a>
+                            </div>
+                        </div>
+                        <div class="location-card__image-wrapper">
+                            <img src="./images/storeimg_taoyuan.png" alt="桃園概念館實景" class="location-card-img">
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section class="mobile-cta-banner">
+            <h2 class="text-title-large">準備好上場了嗎？</h2>
+            <p class="text-muted">立即預約您的專屬時段，體驗最高規格的撞球環境。</p>
+            <a href="booking.html" class="cta-btn mid-btn">預約專屬球檯</a>
+
+        </section>
+        <nav class="mobile-bottom-nav">
+            <a href="index.html" class="tab-item active"> <img src="./images/home.svg" alt="home" class="tab-icon"><span
+                    class="tab-title">首頁</span></a>
+            <button type="button" class="tab-item js-login-modal-btn"><img src="./images/person.svg" alt="home"
+                    class="tab-icon"><span class="tab-title">會員中心</span></button>
+            <a href="booking.html" class="footer-cta-btn"><span class="tab-title">立即預約</span></a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="left">
+                <picture>
+                    <source media="(min-width: 768px)" srcset="./images/logo-letter-dark-mode.svg">
+                    <img src="./images/logo-letter.svg" alt="logo" style="width: 100%; height: auto;">
+                </picture>
+            </div>
+            <div class="center">
+                <a href="" class="footer-btn">隱私權政策</a>
+                <a href="" class="footer-btn">服務條款</a>
+                <a href="" class="footer-btn">常見問題</a>
+                <a href="" class="footer-btn">聯絡我們</a>
+            </div>
+            <div class="right">
+                <p class="copyright">&copy; 2026 Cue Control Billiards. All Rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./JS/global.js"></script>
+</body>
+
+</html>

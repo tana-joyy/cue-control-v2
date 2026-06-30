@@ -1,0 +1,115 @@
+.coach-list {
+    display: flex;
+    
+    gap: 1.6rem;
+}
+.coach-card {
+    flex: 1;
+    width: 360px;
+    border: 1px solid var(--border-standard);
+    /* padding: 3rem 2.4rem; */
+    background-color: var(--bg-container);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .2s;
+}
+.coach-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+.coach-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 /3;
+    /* height: 280px; */
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+.img-area {
+    position: relative;
+}
+.label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    line-height: 1.4rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--bg-bluecontainer);
+    background-color: var(--ui-active);
+    /* border: 1px solid var(--bg-global); */
+    padding: .8rem 1.2rem;
+}
+.card-content {
+    padding-inline: 2rem;
+}
+.name {
+    line-height: 2.4rem;
+
+}
+.specialties {
+    color: var(--text-muted);
+}
+.content-block {
+    padding-block: 2rem;
+
+}
+.content-block:not(:last-child) {
+    border-bottom: 1px solid var(--border-standard);
+}
+.talent {
+    margin-top: 1rem;
+    line-height: 2.4rem;
+}
+.price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: fit-content; */
+    /* white-space: wrap; */
+}
+.price-num {
+    color: var(--action-primary);
+    font-size: 2rem;
+    /* padding-left: 1rem; */
+    font-weight: 600;
+}
+
+@media screen and (width <= 1024px) {
+    .text-title-medium {
+        font-size: 1.8rem;
+    }
+    .text-body, .talent {
+        font-size: 1.4rem;
+    }
+    .text-muted {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (width <= 768px) {
+    .coach-list {
+        flex-direction: column;
+        gap: 2rem;
+
+    }
+    .coach-card {
+        width: 100%;
+    }
+    .coach-photo {
+        aspect-ratio: 16/9;
+    }
+
+    .text-title-medium {
+        font-size: 2rem;
+    }
+    .text-body, .talent {
+        font-size: 1.6rem;
+    }
+    .text-muted {
+        font-size: 1.4rem;
+    }
+}
+

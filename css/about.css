@@ -1,0 +1,147 @@
+section {
+    padding-block: 0;
+}
+.about-manifesto {
+    padding-top: 8rem;
+
+}
+section+section {
+    padding-block: 8rem;
+}
+.card {
+    padding-block: 5rem;
+}
+.about-manifesto .container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .text-body {
+        margin-top: 10px;
+    }
+}
+.about-manifesto-content, .about-manifesto-image-wrapper {
+    flex: 1;
+    align-self: center;
+}
+.about-img {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+
+.about-locations__header {
+    text-align: center;
+}
+.head-title {
+    margin-bottom: 60px;
+}
+
+.location-card {
+    width: 100%;
+    display: flex;
+    /* gap: 50px; */
+    justify-content: space-between;
+    align-items: center;
+}
+.location-card:last-child {
+    margin-top: 60px;
+}
+.location-card__image-wrapper, .location-card__content {
+    width: 48%;
+}
+.location-card-img {
+    /* max-width: 450px; */
+    width: 100%;    
+    display: block;
+    border-radius: 10px;
+    margin: auto;
+}
+.about-page__paragraph {
+    margin-top: 10px;
+}
+.location-card__actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 16px;
+
+    .btn {
+        border: 1px solid var(--border-standard);
+        padding: 12px 20px;
+        border-radius: 16px;
+    }
+    
+}
+
+.mobile-cta-banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--text-main);
+        padding: 6rem 3.2rem;
+        text-align: center;
+    }
+.mobile-cta-banner h2 {
+    color: var(--bg-container);
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+.mobile-cta-banner p {
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    margin-bottom: 2.4rem;
+}
+
+@media screen and (width < 1024px) {
+    .location-card__image-wrapper {
+        width: 38%;
+    } 
+    .location-card__content {
+        width: 59%;
+    }
+
+    .location-card__actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+
+        .btn {
+            border: 1px solid var(--border-standard);
+            padding: 12px 20px;
+            border-radius: 16px;
+        }
+        
+    }
+}
+
+
+@media screen and (width < 768px) {
+    .about-manifesto .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+    }
+    .text-title-large, .text-body {
+        text-align: center;
+    }
+
+    .location-card__image-wrapper, .location-card__content {
+        width: 100%;
+    }
+
+    .location-card {
+        flex-direction: column;
+    }
+    .location-card--reverse {
+        flex-direction: column-reverse;
+
+    }
+
+    h3 {
+        margin-top: 20px;
+    }
+}

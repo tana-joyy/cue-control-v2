@@ -1,0 +1,95 @@
+/* ==================== 撞球遊戲嵌入樣式 ==================== */
+.game-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-block: 10px;
+}
+
+.game-iframe {
+    max-width: 825px;
+    aspect-ratio: 11 / 8;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background-color: transparent;
+    margin-bottom: 6rem;
+
+    /* 💡 關鍵新增：徹底封印 iframe 的滾動條機制 */
+    display: block;       /* 轉為區塊元素，消除底部的神祕基線間隙 */
+    overflow: hidden;     /* 惡靈退散！強制隱藏所有溢出的滾動條 */
+}
+
+/* --------規則--------- */
+.title-section {
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid var(--border-standard);
+    margin-inline: 2rem;
+}
+
+.rule-list {
+    counter-reset: rule-counter;
+    margin: 2rem 2rem 0 2rem;
+}
+.rule-title {
+    color: var(--ui-active);
+    font-weight: 600;
+}
+.rule-item {
+    display: flex;
+    /* gap: 2rem; */
+    padding: 1rem 2rem;
+    margin-bottom: 28px;
+    background-color: var(--bg-global);
+    border-radius: 10px;
+}
+.rule-item:hover {
+    background-color: var(--bg-bluecontainer);
+}
+.rule-num {
+    /* flex: 1; */
+    /* width: 40px; */
+    flex-basis: 3.2rem;
+    display: inline-flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* padding-block: 1rem; */
+    color: var(--action-primary);
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.rule-content {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+@media screen and (width <= 1024px) {
+    .card {
+        padding: 2rem 1.2rem;
+
+        .title-section {
+            margin-inline: 1rem;
+        }
+        .rule-list {
+            margin: 2rem 1rem 0 1rem;
+        }
+    }
+}
+
+@media screen and (width < 768px) {
+    .rule-num {
+        font-size: 2rem;
+    }
+    .game-iframe {
+        min-width: auto;
+        width: 100%;
+        max-width: 424px;
+        aspect-ratio: auto;
+        
+        /* 💡 建議將高度從 780px 稍微放寬到 810px 左右 */
+        /* 因為我們強制隱藏了滾動條，要給予足夠的垂直空間，確保球桌最底部邊框不會被裁切到 */
+        height: 810px; 
+    }
+}

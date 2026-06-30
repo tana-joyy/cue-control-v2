@@ -1,0 +1,583 @@
+:root {
+    /* 1. 品牌與主動狀態 (Brand & Active States) */
+    --action-primary: #FF9500;
+    --ui-active: #0066ff;
+
+    /* 2. 背景與表面 (Background Surfaces) */
+    --bg-global: #F8F9FA;
+    --bg-container: #FFFFFF;
+    --bg-bluecontainer: #EFF6FF;
+
+    /* 3. 文字階層 (Typography Hierarchy) */
+    --text-main: #1C1C1E;
+    --text-body: #3A3A3C;
+    --text-muted: #8E8E93;
+
+    /* 4. 邊框與非作用狀態 (Borders & Inactive States) */
+    --border-standard: #E5E5EA;
+    --border-inactive: #D1D1D6;
+}
+/* 全域屬性 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: inherit;
+    color: var(--text-body);
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: var(--bg-global);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 高階無襯線字體重設 */
+    font-size: 1.6rem; /* 🟢 全站預設內文字級變為 16px */
+    line-height: 1.6;  /* 設定舒適的行高，文字才不會擠在一起 */
+}
+img {
+    display: inline-block;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+input[type='radio'] {
+    display: none;
+}
+.container {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: 0 3.2rem;
+}
+.card {
+    border: 1px solid var(--border-standard);
+    padding: 3rem 2.4rem;
+    background-color: var(--bg-container);
+    border-radius: 10px;
+}
+
+
+section {
+    padding-block: 8rem;
+}
+/* section+section {
+    padding-block: 8rem;
+} 看情況使用*/
+
+.section-title {
+    margin-bottom: 6rem;
+    text-align: center;
+}
+.burger-btn, .mobile-drawer {
+    display: none;
+}
+.logo,
+.nav-btn,
+.footer-btn,
+.copyright {
+    white-space: nowrap;
+}
+
+
+/* ------------------ 字體階層組件 (Typography Tokens) ------------------ */
+
+.text-hero {
+    font-size: 4.8rem;   /* 48px - 專屬於 Hero 區的霸氣大標 */
+    font-weight: 600;   /* 超粗體 */
+    /* letter-spacing: -0.05em; 稍微縮小字距，大字看起來會極度高級 */
+}
+.text-title-large {
+    font-size: 3.2rem;   /* 32px - 各個 Section 的主要大標題（如：預約您的撞球體驗） */
+    font-weight: 800;
+    color: var(--text-main);
+}
+.text-title-medium {
+    font-size: 2.0rem;   /* 20px - 卡片內的大標題（如：新竹旗艦館、球檯預約系統） */
+    font-weight: 600;
+    color: var(--text-main);
+}
+.text-body {
+    font-size: 1.6rem;   /* 16px - 標準標準內文、價目表數字 */
+    font-weight: 400;
+    color: var(--text-body);
+}
+.text-muted {
+    font-size: 1.4rem;   /* 14px - 次要提示、預約規範小字、小標題 */
+    font-weight: 400;
+    /* color: var(--text-muted); */
+}
+.eng-title {
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+/* ------------------buttons--------------------- */
+.big-btn {
+    display: inline-block;
+    padding: 20px 50px;
+    border-radius: 20px;
+    font-size: 1.6rem;
+}
+.mid-btn {
+    border-radius: 20px;
+    padding: .5rem 1.5rem;
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.cta-btn {
+    background-color: var(--action-primary);
+    color: var(--bg-container);
+    font-weight: 600;
+
+}
+.next-step {
+    border-radius: 20px;
+    padding: 10px;
+}
+.sec-btn  {
+    border: 1px solid var(--border-standard);
+    background-color: var(--bg-global);
+    color: var(--text-body);
+}
+.course {
+    background-color: rgba(138, 138, 138, 0.6);
+    color: var(--bg-container);
+}
+.nav-btn, .footer-btn, .logo {
+    color: var(--bg-global);
+    font-size: 1.4rem;
+}
+.nav-btn:hover, .footer-btn:hover, .logo:hover {
+    color: var(--bg-container);
+}
+
+
+/* header */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+}
+/* 內頁專用頁首樣式 */
+.header.header-internal {
+    position: relative;             /* 讓它恢復正常流向，會把下方的內頁內容乖乖往下推 */
+    background-color: var(--text-main); /* 賦予它跟頁尾一樣的時尚質感深色背景 */
+}
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+.header .container .center {
+    /* flex-grow: 3; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 32px;
+}
+.header .container .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* flex-grow: 2; */
+}
+img.logo-pic {
+    width: 80px;
+}
+
+/* --- 下拉選單核心核心樣式 --- */
+.dropdown {
+    position: relative; /* 讓下一層選單相對這個按鈕定位 */
+    display: inline-block;
+}
+/* 下拉選單的黑底座浮動視窗 */
+.dropdown-content {
+    display: none;        /* 平常隱藏起來 */
+    position: absolute;   /* 絕對定位，飄浮在網頁上方 */
+    top: 100%;           /* 剛好貼在「關於我們」按鈕的正下方 */
+    left: 50%;
+    transform: translateX(-50%); /* 讓選單水平居中對齊按鈕 */
+    background-color: var(--text-main); /* 沿用妳的時尚黑底色 */
+    min-width: 160px;     /* 設定寬度 */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* 加上高級感的陰影 */
+    border-radius: 12px;  /* 圓角 */
+    padding: 10px 0;
+    z-index: 999;         /* 確保不會被下方的 Hero 區大圖擋住 */
+}
+/* 下拉選單裡面的每一個超連結 */
+.dropdown-content a {
+    color: var(--bg-global); /* 預設淺色字 */
+    padding: 12px 20px;
+    display: block;          /* 讓它整橫條都可以點擊 */
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+/* 滑鼠移入選單內超連結的效果 */
+.dropdown-content a:hover {
+    background-color: var(--ui-active); /* 變成妳的科技藍 */
+    color: var(--bg-container);        /* 字體變純白 */
+}
+/* 🔥 關鍵魔術：當滑鼠移入 .dropdown 容器時，讓裡面的內容顯示 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* login 燈箱=========================== */
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+dialog.modal-login {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    padding: 20px 40px;
+    border: 1px solid var(--border-standard);
+    border-radius: 12px;
+    position: relative;
+}
+dialog.modal-login::backdrop {
+    background-color: rgba(0, 0, 0, 0.6); /* 黑色半透明 */
+    backdrop-filter: blur(5px);
+}
+
+.close-btn-area {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.login-top {
+    text-align: center;
+    .login-title {
+        padding-block: 20px;
+    }
+}
+.login-box {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* background-color: #198754; */
+}
+.mem-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.mem-block input {
+    background-color: var(--bg-global);
+    padding: 1rem 1.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-standard);
+    margin-top: .4rem;
+}
+.log-in {
+    width: 100%;
+    background-color: var(--action-primary);
+    border-radius: 2rem;
+    padding: 1rem;
+    color: var(--bg-container);
+    font-weight: 600;
+}
+.mem-psw-box {
+    display: flex;
+    justify-content: space-between;
+}
+.forget-psw {
+    color: var(--ui-active);
+    font-size: 1.4rem;
+}
+.register-block {
+    padding-block: 20px;
+    border-top: 1px solid var(--border-standard);
+    text-align: center;
+
+    .register-btn {
+        color: var(--ui-active);
+    }
+}
+
+
+/* footer */
+.footer {
+    padding-block: 30px;
+    background-color: var(--text-main);
+}
+.footer .container {
+    height: 100%;
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer .container .center {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.footer-btn {
+    color: var(--bg-global);
+    font-size: 1.4rem;
+
+    border-radius: 20px;
+    /* padding: .5rem 1.5rem; */
+    /* display: inline-block; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-btn:hover {
+    color: var(--bg-container);
+}
+.copyright {
+    color: var(--bg-container);
+    font-size: 1.4rem;
+}
+.mobile-bottom-nav {
+    display: none;
+}
+
+/* RWD==================================== */
+@media screen and (width <= 1024px) {
+    .text-hero {
+        font-size: 4.0rem;
+    }
+    .text-title-large {
+        font-size: 2.8rem;
+    }
+
+    /* header============================ */
+    .container {
+        padding: 0 1.2rem;
+    }
+    .header .container .center {
+        gap: 0rem; 
+    }
+    .header .container .right {
+        gap: 0.8rem;
+    }
+    .nav-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 1.4rem;
+    }
+    .header .cta-btn {
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+@media screen and ( width < 960px) {
+    .footer .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-block: 2rem;
+    }
+}
+
+
+@media screen and (width < 768px) {
+    .text-hero {
+        font-size: 3.2rem;
+        line-height: 1.3;
+    }
+    .text-title-large {
+        font-size: 2.4rem;
+    }
+    .text-title-medium {
+        font-size: 1.8rem;
+    }
+
+    /* header=============================== */
+    
+
+    .header .container .center,
+    .header .container .right {
+        display: none !important;
+    }
+
+    .big-btn {
+        padding: 10px 20px;
+    }
+
+    .burger-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        z-index: 9999;
+        position: relative;
+    }
+    .burger-bar {
+        width: 100%;
+        height: 2px;
+        background-color: var(--bg-container);
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-drawer {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding-top: 50px;
+        background-color: var(--text-main);
+        z-index: 9998;
+        
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.is-active {
+        transform: translateX(0);
+    }
+    .mobile-drawer-nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .drawer-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-width: 200px;
+        height: 100%;
+        gap: 2.4rem; 
+    }
+    .login-btn {
+        border: 1px solid var(--bg-container);
+        padding: 0.6rem 1.2rem;
+    }
+    
+    .drawer-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        border-radius: 10px;
+        color: var(--bg-global);
+        font-size: 2.0rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .nav-btn-child-list {
+        transform: translateX(20px);
+        display: none;
+    }
+    .-on {
+        display: block;
+    }
+
+    
+
+    /* 漢堡按鈕三條線變身「✕」 */
+    .burger-btn.is-active .burger-bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .burger-btn.is-active .burger-bar:nth-child(2) {
+        opacity: 0; 
+    }
+    .burger-btn.is-active .burger-bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .icon-nav-btn {
+        display: block;
+    }
+
+    /* 底部功能列=========================== */
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: var(--bg-container);
+        border-top: 1px solid var(--border-standard);
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
+        text-align: center;
+        vertical-align: middle;
+
+        .tab-title {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+        }
+        .tab-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-inline: 10px;
+        }
+    }
+
+
+    /* footer========================== */
+    .footer {
+        background-color: var(--bg-container);
+        padding-block: 40px;
+    }
+    .footer .container {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+    .footer .logo,
+    .footer-btn {
+        color: var(--text-main) !important; 
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+    .footer .center {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .footer .copyright {
+        color: var(--text-muted) !important;
+        font-size: 1.2rem;
+    }
+
+    .footer-cta-btn {
+        flex: 2;
+        height: 100%;
+        /* line-height: 0; */
+        background-color: var(--action-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .tab-title {
+            color: var(--bg-container);
+            font-weight: 600;
+            
+            
+        }
+        
+    }
+    body {
+        padding-bottom: 60px;
+    }
+
+}

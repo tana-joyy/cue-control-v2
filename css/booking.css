@@ -1,0 +1,962 @@
+/* #booking-step-1 {
+    display: none;
+} */
+:root {
+    /* 球桌按鈕色 */
+    --table-active-bgcolor: rgba(227, 251, 227, 0.5);
+    --table-active-border: #A3EAA3;
+    --table-active-font: #198754;
+    --table-active-hover:  rgba(193, 247, 193, 0.75);
+
+    --table-disable-bgcolor: rgba(229, 229, 234, 0.7);
+    --table-disable-border: #D1D1D6;
+    --table-disable-font: #9a9a9a;
+
+    --table-checked-bgcolor: rgba(217, 231, 249, 0.85);
+
+    --table-btn-font: #6c6c6c;
+}
+
+/* JS 操控屬性 */
+/* .hidden {
+    display: none !important;
+} */
+
+
+.booking-section .content {
+    margin-top: 1rem;
+}
+
+/* ==============進度條============== */
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.stepper {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #FF9500; */
+}
+.step-item {
+    display: inline-block;
+    padding-inline: 10px;
+    position: relative;
+}
+.step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background-color: var(--border-standard);
+}
+.step-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--border-standard);
+    text-align: center;
+    border-radius: 50%;
+    color: var(--border-inactive);
+    line-height: auto;
+}
+.step-item.active .step-number {
+    background-color: var(--ui-active);
+    color: var(--bg-container);
+}
+.rule-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-body);
+}
+.notice.topic ol {
+    padding-left: 20px;
+}
+
+.notice.topic li {
+    list-style: decimal;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin-bottom: 8px;
+}
+/* ===========表單外層容器============ */
+.steps-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1.2rem;
+    /* position: relative; */
+}
+.col-right {
+    flex: 0 0 300px;
+}
+.col-left {
+    /* flex: 3; */
+    flex: 1;
+    width: 100%;
+}
+
+/* ---------------------預約表單-------------------------- */
+/* --------Step 1----------- */
+.card {
+    margin-top: 20px;
+    border: 1px solid var(--border-standard);
+    padding: 2rem;
+    background-color: var(--bg-container);
+    border-radius: 10px;
+    width: 100%;
+}
+.row-top {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-standard);
+}
+.row-center {
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* text-align: center; */
+    /* align-items: center; */
+    margin-bottom: 1.6rem;
+}
+
+.book-hint {
+    margin-top: 0;
+}
+.store-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.store-btn {
+    background-color: var(--bg-global);
+    padding-block: 10px;
+    width: 100%;
+    text-align: center;
+    /* margin-inline: 20px; */
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.store-btn:hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+
+.store-options input[type='radio']:checked+.store-btn {
+    background-color: var(--ui-active);
+    color: var(--bg-container);
+}
+
+
+
+
+
+/* ==================== 預約提示框 ==================== */
+.booking-notice {
+    background-color: var(--bg-bluecontainer);
+    padding: 14px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    width: 100%; 
+}
+
+.notice-title {
+    display: block;
+    color: var(--ui-active);
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+/* 條列式規範內容 */
+.notice-list {
+    padding-left: 0;
+    margin: 0;
+}
+
+.notice-list li {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-body);
+    margin-bottom: 6px;
+    position: relative;
+    padding-left: 14px;
+}
+
+.notice-list li::before {
+    content: "•";
+    color: var(--ui-active);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+.pick-date {
+    width: 100%;
+    text-align: center;
+    background-color: var(--bg-global);
+    border-radius: 20px;
+    border: 1px solid var(--border-standard);
+}
+/* .pick-date {
+    appearance: none;
+    border: 1px solid var(--border-standard);
+
+    background-color: var(--bg-global);
+} */
+
+.hours {
+    display: flex;
+    justify-content: space-around;
+    padding-inline: 10px;
+}
+
+.hour-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hour-btn:hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+
+.hours input[type='radio']:checked+.hour-btn {
+    background-color: var(--ui-active);
+    color: var(--bg-container);
+}
+.booking-title, .step-text {
+    color: var(--text-muted);
+}
+
+
+
+.choose-topics {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.choose-topics .col {
+    flex: 1;
+}
+
+select.time-input {
+    padding: 0 20px;
+    cursor: pointer;
+    /* 拔除預設外觀 */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px;
+}
+
+.time-input {
+    background-color: var(--bg-global);
+    border: 1px solid var(--border-standard);
+    color: var(--text-body);
+    border-radius: 20px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.confirm-area {
+    width: 100%;
+    margin-top: 1.6rem;
+}
+.-none {
+    display: none;
+
+}
+
+
+
+.next-step {
+    background-color: var(--action-primary);
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+    /* padding-top: 10px; */
+    width: 100%;
+    color: var(--bg-container);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-forbidden {
+    background-color: var(--table-disable-bgcolor);
+    border: 1px solid var(--border-standard);
+    border-radius: 20px;
+    padding-top: 10px;
+    width: 100%;
+    color: var(--text-muted);
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+/* -------------------預約介紹及注意事項--------------------- */
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-standard);
+}
+.notice-title {
+    color: var(--text-muted);
+}
+.price-table-box {
+    margin-top: 16px;
+    height: 100%;
+}
+.price-table {
+    margin-inline: auto;
+    border: 1px solid var(--border-standard);
+    /* padding: 20px; */
+    border-radius: 20px;
+    width: 100%;
+    /* 現代做法：讓邊框維持分開，但間距設為 0 */
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+th {
+    background-color: var(--bg-global);
+    font-weight: normal;
+    font-size: 1.4rem;
+}
+
+td,
+th {
+    padding: 6px 10px;
+    text-align: center;
+    /* background-color: #007AFF; */
+}
+td {
+    width: 25%;
+}
+
+tr:not(:first-child):hover {
+    background-color: var(--bg-bluecontainer);
+    color: var(--ui-active);
+}
+
+.row-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.accordion-btn{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-between;
+    padding-inline: 5rem;
+}
+/* js控制風琴屬性========================================= */
+
+.accordion > .notice.-on {
+    height: var(--content-height);
+}
+.accordion > .notice {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out; 
+}
+.notice-btn {
+    display: inline-block;
+    width: 20px;  
+    height: 20px;
+    mask: url('../images/arrow_down.svg') no-repeat center / contain;
+    -webkit-mask: url('../images/arrow_down.svg') no-repeat center / contain;
+    background-color: var(--text-muted)
+}
+.notice-btn.-on {
+    mask: url('../images/arrow_up.svg') no-repeat center / contain;
+    -webkit-mask: url('../images/arrow_up.svg') no-repeat center / contain;
+
+}
+
+.price-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* width: 50%; */
+    flex: 1;
+}
+.rules {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* width: 50%; */
+}
+
+/* ----------Step 2----------- */
+.btn-back-step {
+    /* margin-left: 0; */
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: all .2s;
+}
+.btn-back-step:hover {
+    color: var(--text-body);
+}
+.sticky-layout-row {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+    align-items: flex-end;
+}
+.sticky-layout-row .col-left {
+    flex: 2;
+}
+.sticky-layout-row .col-right {
+    flex: 1;
+}
+.switch-mode {
+    display: flex;
+    gap: 1.6rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.table-mode {
+    display: block;
+    border: 1px solid var(--border-standard);
+    border-radius: 2rem;
+    padding: 1rem 3rem;
+    flex: 1;
+    transition: all .2s;
+    cursor: pointer;
+}
+.table-mode:hover {
+    background-color: var(--bg-bluecontainer);
+    h3, p {
+        color: var(--ui-active);
+    }
+} 
+.choose-mode-input:checked + .table-mode {
+    span {
+        color: var(--bg-container);
+    }
+    background-color: var(--ui-active);
+}
+.mode-title {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+.mode-txt {
+    display: block;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+
+.table-info {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    height: 100%;
+    align-items: center;
+    
+}
+.table-pic {
+    height: 100%;
+    background-color: #198754;
+    display: flex;
+    
+    .img-table-brand {
+        max-width: 200px;
+        display: block;
+        /* margin:auto 0; */
+        /* align-self: center; */
+        
+    }
+}
+.table-brand {
+    font-weight: 600;
+}
+.memo {
+    font-size: 1.2rem;
+    margin-top: 8px;
+}
+/* -----------手動選桌------------ */
+.manual-info {
+    background-color: var(--bg-container);
+}
+.floor-plan-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    background-image: url(../images/booking-table.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.table-btn {
+    position: absolute;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    /* background-color: var(--ui-active); */
+}
+.brand {
+    font-size: .8rem;
+    color: var(--table-btn-font);
+}
+input[type='radio'] + .table-btn {
+    background-color: var(--table-active-bgcolor);
+    color: var(--table-active-font);
+    border: 2px solid var(--table-active-border);
+    transition: all .2s;
+}
+input[type='radio'] + .table-btn:hover {
+    background-color: var(--table-active-hover);
+    transform: scale(1.03);
+}
+input[type='radio']:disabled + .table-btn {
+    background-color: var(--table-disable-bgcolor);
+    color: var(--table-disable-font);
+    border: 2.5px solid var(--table-disable-border);
+    cursor: not-allowed;
+}
+input[type='radio']:checked + .table-btn {
+    background-color: var(--table-checked-bgcolor);
+    color: var(--ui-active);
+    border: 2.5px solid var(--ui-active);
+    box-shadow: 0 0 12px rgba(0, 122, 255, 0.4);
+    transform: scale(1.03);
+}
+
+.table-pos-1 { left: 17.4%; top: 28.8%; width: 8.5%; height: 29.4%; }
+.table-pos-2 { left: 31.5%; top: 28.8%; width: 8.5%; height: 29.4%; }
+.table-pos-3 { left: 45.4%; top: 18.0%; width: 8.5%; height: 29.4%; }
+.table-pos-4 { left: 59.5%; top: 18.0%; width: 8.5%; height: 29.4%; }
+.table-pos-5 { left: 73.4%; top: 18.0%; width: 8.5%; height: 29.4%; }
+.table-pos-6 { left: 59.5%; top: 58.9%; width: 8.5%; height: 29.4%; }
+.table-pos-7 { left: 73.4%; top: 58.9%; width: 8.5%; height: 29.4%; }
+
+/* step 3 */
+.snack-add {
+    border-top: 1px solid var(--border-standard);
+    margin-top: 2rem;
+}
+.food-items-title {
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-block: 1rem;
+}
+.food-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+.food-card {
+    padding: 1rem;
+    border: 1px solid var(--border-standard);
+    border-radius: 10px;
+    display: flex;
+    gap: .8rem;
+    width: 100%;
+    background-color: var(--bg-global);
+}
+.food-card img {
+    width: 100px;
+    border-radius: 10px;
+}
+.food-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* min-width: 160px; */
+}
+.food-name {
+    font-weight: 600;
+}
+.food-num {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* white-space: nowrap; */
+    .food-price {
+        color: var(--ui-active);
+        font-size: 1.4rem;
+    }
+}
+.count-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-container);
+    padding-inline: 4px;
+    border-radius: 2rem;
+    border: 1px solid var(--border-standard);
+}
+.count-box span {
+    width: 2rem;
+    text-align: center;
+}
+.count-box button {
+    width: 2rem;
+    padding-inline: 5px;
+    font-weight: 800;
+    font-size: 1.6rem;
+}
+/* -----------step2、3選取狀態欄-------------- */
+
+
+/* ----------step 4 ------------ */
+
+.login-top {
+    text-align: center;
+}
+.login-box {
+    width: 70%;
+    margin: auto;
+    /* background-color: #198754; */
+}
+.mem-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.6rem;
+}
+
+.mem-block input {
+    background-color: var(--bg-global);
+    padding: 1rem 1.6rem;
+    border-radius: 2px;
+    border: 1px solid var(--border-standard);
+    margin-top: .4rem;
+}
+.log-in {
+    width: 100%;
+    align-items: center;
+    background-color: var(--action-primary);
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    color: var(--bg-container);
+    font-weight: 600;
+}
+.mem-psw-box {
+    display: flex;
+    justify-content: space-between;
+}
+.forget-psw {
+    color: var(--ui-active);
+    font-size: 1.4rem;
+}
+/* 右側選取狀態欄================== */
+.sticky-sidebar-panel {
+    position: sticky;
+    top: 1rem;
+    height: fit-content;
+    /* align-self: flex-start; */
+    padding-block: 10px;
+}
+.show-detail-box {
+    display: none;
+}
+
+.area-confirm-step:not(:last-child) {
+    border-bottom: 1px dashed var(--border-inactive);
+}
+.title-steps {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 12px;
+    transition: all .3s;
+}
+.title-steps.-current-step {
+    color: var(--ui-active);
+}
+
+.total-price-value {
+    color: var(--ui-active);
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+.summary-total-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-top: 1px dotted var(--text-muted); */
+    /* padding-top: 1rem; */
+}
+.total-label-value {
+    font-size: 1.4rem;
+}
+.final-price {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.chosen-result {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+.chosen-result li  {
+    line-height: 1.4rem;
+    
+}
+.chosen-result li + li {
+    margin-top: 8px;
+}
+.chosen-food-list {
+    min-height: 20px;
+    max-height: 80px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 6px;
+    
+    /* background-color: #198754; */
+}
+.chosen-food-list li {
+    display: flex;
+    justify-content: space-between;
+}
+.item-left {
+    display: flex;
+    flex-grow: 1;
+    /* align-items: center; */
+}
+.item-left::after {
+    content: "";
+    border-bottom: 1px dotted var(--border-inactive);
+    flex-grow: 1;
+    margin: 0 6px;
+}
+.booking-summary__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px dashed var(--ui-active);
+    padding-block: 12px;
+}
+.booking-summary__price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+}
+
+.area-final-check {
+    margin-block: 12px;
+}
+
+@media screen and (width <= 1024px) {
+    body {
+        padding-bottom: 250px;
+    }
+
+    .sticky-sidebar-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        z-index: 10;
+    }
+    .show-detail-box {
+        display: block;
+        height: fit-content;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-standard);
+    }
+    .show-btn {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .show-arrow {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        -webkit-mask: url('../images/arrow_up.svg') no-repeat center / contain; 
+        mask: url('../images/arrow_up.svg') no-repeat center / contain;
+        background-color: var(--text-body);
+    }
+    .show-arrow.-on {
+        -webkit-mask: url('../images/arrow_down.svg') no-repeat center / contain; 
+        mask: url('../images/arrow_down.svg') no-repeat center / contain;
+    }
+    .next-step {
+        width: fit-content;
+        padding-inline: 56px;
+    }
+
+    .title-steps {
+        margin-top: 6px;
+    }
+    .area-final-check {
+        margin-block: 6px;
+    }
+
+    .booking-summary-body {
+        display: flex;
+        justify-content: space-around;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease-out; 
+    }
+    .booking-summary-body.-on {
+        height: var(--content-height);
+    }
+
+    .area-confirm-step:not(:last-child) {
+        border-bottom: none;
+    }   
+    .chosen-result {
+        margin-bottom: 6px;
+    }
+    .booking-summary__footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 3.2rem;
+        align-items: center;
+        padding-block: 10px;
+        border-top: 0;
+
+        .booking-summary__price-breakdown {
+            display: flex;
+            justify-content: space-between;
+            gap: 2.4rem; 
+        }
+    }
+}
+
+@media screen and (width <= 768px) {
+    body {
+        padding-bottom: 120px;
+    }
+
+    .booking-summary-body {
+        flex-direction: column;
+    }
+    .chosen-food-list {
+        height: auto;
+    }
+
+    .next-step {
+        /* width: fit-content; */
+        padding-inline: 50px;
+    }
+
+
+    .booking-summary__footer {
+        border-top: none;
+        padding-block: 0;
+        padding-top: 8px;
+        gap: 12px;
+    }
+
+    .booking-summary__price-breakdown {
+        display: none !important;
+    }
+
+    .price-table-box {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 12px;
+    }
+    .price-table {
+        min-width: 420px;
+    }
+
+
+    .notice {
+        flex-direction: column;
+    }
+
+    .choose-topics {
+        flex-direction: column;
+    }
+
+    .table-mode {
+        padding: .5rem 1.5rem;
+    }
+
+    .mode-txt {
+        display: none;
+    }
+
+    .manual-box {
+        overflow-x: auto; /* 靈魂關鍵：開啟橫向內部捲軸 */
+        width: 100%;
+        padding-bottom: 12px; 
+        -webkit-overflow-scrolling: touch;
+        
+    }
+    .floor-plan-wrapper {
+        min-width: 600px;
+    }
+
+
+    .table-info {
+    flex-direction: column;
+    
+}
+
+
+    .food-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .food-card img {
+        min-width: 100px;
+        width: 100%;
+    }
+    .food-info {
+        align-items: center;
+    }
+    .food-num {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .summary-total-box {
+        flex-direction: column;
+    }
+}

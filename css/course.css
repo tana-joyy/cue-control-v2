@@ -1,0 +1,218 @@
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.4rem;
+}
+.course-card {
+  position: relative;
+  border: 1px solid var(--border-standard);
+  background-color: var(--bg-container);
+  border-radius: 12px;
+  box-shadow: 0 5px 8px 2px rgba(0, 0, 0, 0.2);
+  padding-inline: 2rem;
+}
+
+.card-header {
+  padding-block: 1.6rem;
+  margin-top: 10px;
+}
+.course-slogan {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+.course-client {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+.card-body {
+  padding-block: 1.4rem;
+  border-top: 1px dashed var(--border-inactive);
+  border-bottom: 1px dashed var(--border-inactive);
+}
+.meta-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  /* color: var(--text-muted); */
+  /* padding-top: 1rem; */
+}
+.badge {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  padding: 6px 16px;
+  border-radius: 16px;
+  color: var(--bg-container);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.syllabus-list {
+  padding-top: 1rem;
+}
+.syllabus-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.4rem;
+}
+.syllabus-list li + li {
+  margin-top: .4rem;
+}
+.syllabus-list li::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  /* transform: translateX(-8px); */
+  margin-block: auto;
+  mask: url('../images/check_circle.svg') no-repeat center / contain;
+}
+
+.coach-area {
+  padding-block: 1.4rem;
+  position: relative;
+  border-bottom: 1px dashed var(--border-inactive);
+
+}
+span.coach-name {
+  display: inline-block;
+  cursor: pointer;
+  transition: all .1s;
+}
+.coach-name-box {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coach-mini-card {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  position: absolute;
+  top: -112px;
+  left: -15px;
+  max-width: 350px;
+  /* height: 140px; */
+  background-color: var(--bg-container);
+  display: flex;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-standard);
+  align-items: center;
+  gap: 8px;
+
+  
+  img.coach-photo {
+    max-width: 80px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    flex-basis: 80px;
+    flex: 1;
+  }
+
+  .mini-card-txt {
+    /* font-size: 1.4rem; */
+
+    .mini-coach-name {
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted var(--border-inactive);
+      padding-block: 6px;
+    }
+
+    .mini-talent {
+      font-size: 1.2rem;
+      padding-block: .6rem;
+    }
+
+    .mini-btn-more {
+      font-size: 1.4rem;
+    }
+
+    .icon-open-in-new {
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+    
+    
+}
+.coach-mini-card.-on {
+  opacity: 1;
+  visibility: visible;
+}
+
+.price-tag {
+  padding-block: 1.6rem;
+  text-align: center;
+  font-size: 1.4rem;
+  .price-value {
+    font-size: 1.8rem;
+  }
+  .buy-btn {
+    font-size: 1.8rem;
+    margin-block: 1.2rem;
+    width: 100%;
+    border-radius: 10px;
+    padding-block: 1.2rem;
+  }
+}
+
+.card-level-1 {
+  .badge, .syllabus-list li::before, .buy-btn {
+    background-color: var(--ui-active);
+  }
+}
+.card-level-2 {
+  .badge, .syllabus-list li::before, .buy-btn {
+    background-color: var(--action-primary);
+  }
+  transform: scale(1.03);
+  z-index: 1;
+}
+.card-level-3 {
+  .badge, .syllabus-list li::before, .buy-btn {
+    background-color: var(--text-body);
+  }
+}
+@media (hover: hover) {
+  span.coach-name:hover {
+    display: inline-block;
+    color: #000;
+    font-weight: 400;
+  }
+  .coach-area:hover .coach-mini-card {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+
+
+@media screen and (width <= 960px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+    gap: 6rem;
+  }
+  .course-client {
+    display: none;
+  }
+  .card-level-2 {
+    order: -1;
+    transform: scale(1);
+  }
+  .badge{
+    top: -20px;
+    left: -5px;
+    transform: none;
+  }
+}
