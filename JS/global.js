@@ -73,4 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
     loginModal.close();
   })
 
+  // 底部導覽列 active 狀態
+  const bottomNavItems = document.querySelectorAll(".mobile-bottom-nav .tab-item");
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+
+  bottomNavItems.forEach(function (item) {
+    const itemHref = item.getAttribute("href");
+    const itemPage = itemHref ? itemHref.split("/").pop() : "";
+
+    if (itemPage === currentPage) {
+      item.classList.add("active");
+    } else {
+      item.classList.remove("active");
+    }
+  });
+
 })

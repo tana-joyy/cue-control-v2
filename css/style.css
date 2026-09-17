@@ -1290,6 +1290,26 @@ select.time-input, .pick-date {
             justify-content: center;
             padding-inline: 10px;
         }
+        .tab-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: var(--text-main);
+        }
+        .icon-home {
+            mask: url('../images/home.svg') no-repeat center / contain;
+            -webkit-mask: url('../images/home.svg') no-repeat center / contain;
+        }
+        .icon-person {
+            mask: url('../images/person.svg') no-repeat center / contain;
+            -webkit-mask: url('../images/person.svg') no-repeat center / contain;
+        }
+        .tab-item.active .tab-title {
+            color: var(--ui-active);
+        }
+        .tab-item.active .tab-icon {
+            background-color: var(--ui-active);
+        }
     }
 
 /* service======================== */
