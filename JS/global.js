@@ -68,6 +68,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });}
   )
   
+  loginModal.addEventListener("click", function(e){
+    const rect = loginModal.getBoundingClientRect();
+    // 判斷有沒有點擊到燈箱以外的地方，if true就是有點到
+    const clickedOutside = 
+      e.clientX < rect.left ||
+      e.clientX > rect.right ||
+      e.clientY < rect.top ||
+      e.clientY > rect.bottom;
+    if(clickedOutside){
+      loginModal.close();
+    }
+  });
 
   closeBtn.addEventListener("click", function () {
     loginModal.close();
