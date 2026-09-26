@@ -627,9 +627,27 @@ input[type='radio']:checked + .table-btn {
     border-radius: 2rem;
     border: 1px solid var(--border-standard);
 }
-.count-box span {
+.count-box .qty {
     width: 2rem;
     text-align: center;
+    /* 拔除 input 預設外觀，讓它看起來跟原本的 span 一樣 */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font-size: 1.6rem;
+    color: var(--text-body);
+}
+.count-box .qty::-webkit-outer-spin-button,
+.count-box .qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.count-box .qty:focus-visible {
+    outline: 2px solid var(--ui-active);
+    outline-offset: 1px;
 }
 .count-box button {
     width: 2rem;
