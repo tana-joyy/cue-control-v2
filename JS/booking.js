@@ -86,9 +86,65 @@ window.addEventListener('load', function () {
   const modeResult = document.getElementById('mode-result');
   const tableResult = document.getElementById('table-result');
   const totalTablePriceEl = document.querySelector('.total-table-price');
+  const foodContainer = document.querySelector('.food-container');
+  const foodResult = document.getElementById('global-food-list');
+
+  foodContainer.addEventListener("click", function(e){
+    const card = e.target.closest('.food-card');
+    if (!card) return;
+    
+    const countBox = e.target.closest('.count-box');
+    if (!countBox) return;
+
+    const foodQty = countBox.querySelector('.qty');
+
+    if(e.target.classList.contains("btn-plus")){
+      foodQty.value ++;
+    }else if(e.target.classList.contains("btn-minus") && foodQty.value > 0){
+      foodQty.value --;
+    }
+
+    renderFoodSummary();
+  });
 
   bookingForm.addEventListener('change', updateSummaryOrder);
 
+  function renderFoodSummary(){
+    // 1. 抓到 <ul id="global-food-list">，清空它裡面的內容
+    foodResult.innerHTML = "";
+    // 2. 抓到全部 .food-card（用 querySelectorAll）
+    const allFoodCards = document.querySelectorAll('.food-card');
+
+    // 準備空的字串給新的html標籤累積、放進去
+    let htmlString = "";
+
+    // 3. 用 forEach 逐一檢查每一張卡片
+    //    - 讀出這張卡片的 qty 數量（記得轉數字）
+    //    - 如果數量 > 0，就組出一段 <li> 的 HTML 字串，塞進 <ul>
+    allFoodCards.forEach((foodItem)=>{
+      const foodInput = foodItem.querySelector('.qty');
+      const foodQty = parseInt(foodInput.value);
+      const foodName = foodItem.querySelector('.food-name');
+
+      if(foodQty > 0 ){
+        // console.log(foodItem.dataset.itemId);
+        htmlString += `
+        <li data-item-id="${foodItem.dataset.itemId}" 
+        data-price="${foodItem.dataset.price}" 
+        data-amount="${foodInput.value}">
+          <span class="item-left">
+              <span class="item-name">${foodName.textContent}</span><span
+                  class="item-multiplier">*</span><span class="item-amount">${foodInput.value}</span>
+          </span>
+          <span class="item-right">
+              <span class="item-price">${parseInt(foodInput.value) * parseInt(foodItem.dataset.price)}</span>元
+          </span>
+        </li>`;
+      }
+
+      foodResult.innerHTML = htmlString;
+    });
+  }
 
   function updateSummaryOrder() {
     if (!bookingForm) { return; }
