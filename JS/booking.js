@@ -86,6 +86,8 @@ window.addEventListener('load', function () {
   const modeResult = document.getElementById('mode-result');
   const tableResult = document.getElementById('table-result');
   const totalTablePriceEl = document.querySelector('.total-table-price');
+  const totalFoodPriceEl = document.querySelector('.total-food-price');
+  const summaryTotalEl = document.getElementById('global-summary-total');
   const foodContainer = document.querySelector('.food-container');
   const foodResult = document.getElementById('global-food-list');
 
@@ -108,6 +110,9 @@ window.addEventListener('load', function () {
   });
 
   bookingForm.addEventListener('change', updateSummaryOrder);
+
+  // 頁面載入時先算一次，蓋掉 HTML 寫死的金額
+  calculateTotal();
 
   function renderFoodSummary(){
     // 1. 抓到 <ul id="global-food-list">，清空它裡面的內容
@@ -141,9 +146,11 @@ window.addEventListener('load', function () {
           </span>
         </li>`;
       }
-
-      foodResult.innerHTML = htmlString;
     });
+
+    foodResult.innerHTML = htmlString;
+
+    calculateTotal();
   }
 
   function updateSummaryOrder() {
@@ -215,7 +222,50 @@ window.addEventListener('load', function () {
 
     }
 
+    // 球桌
+    const checkedTable = bookingForm.querySelector('input[name="billiard-table"]:checked');
+    if (chosenMode && chosenMode.value === 'manual' && checkedTable) {
+      const tableBrand = bookingForm.querySelector(`label[for="${checkedTable.id}"] .brand`);
+      const tableText = `${checkedTable.value} 號 ${tableBrand.textContent.trim()}`;
+      tableResult.textContent = tableText;
+      bookingForm.querySelector('.manual-info .table-brand').textContent = tableText;
+    } else if (chosenMode && chosenMode.value === 'auto') {
+      tableResult.textContent = '系統自動配桌';
+    } else {
+      tableResult.textContent = '尚未選擇球桌';
+    }
 
+    calculateTotal();
+  }
+
+  function calculateTotal() {
+    // 球檯單價：手動選桌且有勾選桌號 → 取該桌 data-price，其他情況 → 200
+    let tablePrice = 0;
+    const chosenMode = bookingForm.querySelector('input[name="choose-mode-input"]:checked');
+    const checkedTable = bookingForm.querySelector('input[name="billiard-table"]:checked');
+
+    if (chosenMode && chosenMode.value === 'auto'){
+      tablePrice = 200;
+    }else if (chosenMode && chosenMode.value === 'manual' && checkedTable) {
+      tablePrice = parseInt(checkedTable.dataset.price, 10);
+    }
+
+    // 球檯總價 = 時數 × 單價（尚未選時數 → 0）
+    const checkedHour = bookingForm.querySelector('input[name="hour"]:checked');
+    let tableTotal = 0;
+    if (checkedHour) {
+      tableTotal = parseInt(checkedHour.value, 10) * tablePrice;
+    }
+
+    // 加購總價 = 摘要列每個 li 的 data-price × data-amount 加總
+    let foodTotal = 0;
+    foodResult.querySelectorAll('li').forEach((foodLi) => {
+      foodTotal += parseInt(foodLi.dataset.price, 10) * parseInt(foodLi.dataset.amount, 10);
+    });
+
+    totalTablePriceEl.textContent = tableTotal;
+    totalFoodPriceEl.textContent = foodTotal;
+    summaryTotalEl.textContent = `${tableTotal + foodTotal}元`;
   }
 
 })
